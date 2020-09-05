@@ -6,34 +6,31 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		Consumidor consumidor = new Consumidor();
-		consumidor.fiados = new int[10];
-		consumidor.telefone = "(11) 2222-2222";
+				
+		int[] fiados = new int[10];
 		
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.print("Informe o nome do cliente: ");
-		consumidor.nome = scanner.nextLine();
+		String nome = scanner.nextLine();
 		
 		System.out.print("Informe o valor da compra:");
-		consumidor.fiados[0] = Integer.valueOf(scanner.nextLine());
+		fiados[0] = Integer.valueOf(scanner.nextLine());
 		
-		int total = somaFiado(consumidor.fiados);
+		System.out.print("Informe o telefone do cliente:");
+		String telefone = scanner.nextLine();
+		
+		Consumidor consumidor = new Consumidor(nome,telefone,fiados);
+		
+		int total = consumidor.getFiados();
 		
 		if(total>100) {
-			System.out.println("Cliente " + consumidor.nome + " deve: " + total + ". Ganhou um Brinde." );
+			System.out.println("Cliente " + consumidor.getNome() + " deve: " + total + ". Ganhou um Brinde." );
 		}else {
-			System.out.println("Cliente " + consumidor.nome + " deve: " + total);
+			System.out.println("Cliente " + consumidor.getNome() + " deve: " + total);
 		}
 		
 	}
-	public static int somaFiado(int[] fiados) {
-		int total = 0;
-		for (int f : fiados) {
-			total += f;
-		}
-		return total;
-	}
+	
 
 }
